@@ -16,6 +16,7 @@ public interface UserRepository extends JpaRepository<User, Integer> {
     @Modifying
     @Query("UPDATE User u SET u.resetPasswordToken = ?1, u.resetPasswordTokenExpiry = ?2 WHERE u.email = ?3")
     void updateResetPasswordToken(String token, LocalDateTime expiry, String email);
+    boolean existsByEmail(String email);
 
     Optional<User> findByResetPasswordToken(String token);
 }

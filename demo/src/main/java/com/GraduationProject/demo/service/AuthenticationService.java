@@ -25,6 +25,12 @@ public class AuthenticationService {
 
     public AuthenticationResponse register(RegisterRequest request) {
 
+        if (userRepository.existsByEmail(request.getEmail())) {
+            return AuthenticationResponse.builder()
+                    .token("Email already exists.")
+                    .build();
+        }
+
         var user = User.builder()
                 .haveCancer(request.getHaveCancer())
                 .type(request.getType())
@@ -39,6 +45,7 @@ public class AuthenticationService {
                 .password(passwordEncoder.encode(request.getPassword()))
                 .role(Role.USER)
                 .build();
+
         userRepository.save(user);
 
         var jwtToken = jwtService.generateToken(user);
