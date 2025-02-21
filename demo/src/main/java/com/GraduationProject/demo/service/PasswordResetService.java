@@ -7,6 +7,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.Random;
 import java.util.UUID;
 
 @Service
@@ -21,26 +22,32 @@ public class PasswordResetService {
         User user = userRepository.findByEmail(email)
                 .orElseThrow(() -> new RuntimeException("User not found"));
 
-        String token = UUID.randomUUID().toString();
+        String code = generateFourDigitNumber();
         LocalDateTime expiry = LocalDateTime.now().plusHours(1); // Token valid for 1 hour
 
-        userRepository.updateResetPasswordToken(token, expiry, email);
+        userRepository.updateResetPasswordCode(code, expiry, email);
 
-        String resetLink = "http://localhost:8080/api/v1/auth/reset-password?token=" + token;
-        emailService.sendEmail(email, "Password Reset", "Click the link to reset your password: " + resetLink);
+        String resetLink = "Your Verification Code : " + code;
+        emailService.sendEmail(email, "Verify yor email address" + resetLink);
     }
 
-    public void resetPassword(String token, String newPassword) {
-        User user = userRepository.findByResetPasswordToken(token)
-                .orElseThrow(() -> new RuntimeException("Invalid token"));
+    public void resetPassword(String code, String newPassword) {
+        User user = userRepository.findByResetPasswordCode(code)
+                .orElseThrow(() -> new RuntimeException("Invalid Code"));
 
-        if (user.getResetPasswordTokenExpiry().isBefore(LocalDateTime.now())) {
-            throw new RuntimeException("Token expired");
+        if (user.getResetPasswordCodeExpiry().isBefore(LocalDateTime.now())) {
+            throw new RuntimeException("Code expired");
         }
 
         user.setPassword(passwordEncoder.encode(newPassword));
-        user.setResetPasswordToken(null);
-        user.setResetPasswordTokenExpiry(null);
+        user.setResetPasswordCode(null);
+        user.setResetPasswordCodeExpiry(null);
         userRepository.save(user);
     }
+    public static String generateFourDigitNumber() {
+        Random random = new Random();
+        int code= 1000 + random.nextInt(9000);
+        return String.valueOf(code);
+    }
+
 }

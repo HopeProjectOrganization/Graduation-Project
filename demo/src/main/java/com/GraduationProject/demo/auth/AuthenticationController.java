@@ -32,7 +32,7 @@ public class AuthenticationController {
     }
     @PostMapping("reset-password")
     public ResponseEntity<String> resetPassword(@RequestBody Map<String, String> request) {
-        String token = request.get("token");
+        String token = request.get("code");
         String newPassword = request.get("newPassword");
         passwordResetService.resetPassword(token, newPassword);
         return ResponseEntity.ok("Password reset successfully");

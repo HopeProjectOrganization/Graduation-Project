@@ -42,8 +42,8 @@ public class User implements UserDetails {
     @Enumerated(EnumType.STRING)
     private Role role;
 
-    private String resetPasswordToken; // New field for reset token
-    private LocalDateTime resetPasswordTokenExpiry; // New field for token expiry
+    private String resetPasswordCode;
+    private LocalDateTime resetPasswordCodeExpiry;
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return List.of(new SimpleGrantedAuthority(role.name()));
