@@ -32,9 +32,11 @@ public class AuthenticationController {
     }
     @PostMapping("reset-password")
     public ResponseEntity<String> resetPassword(@RequestBody Map<String, String> request) {
-        String  code = request.get("code");
+
         String newPassword = request.get("newPassword");
-        passwordResetService.resetPassword(code , newPassword);
+        String newPasswordConfirm = request.get("newPasswordConfirm");
+
+        passwordResetService.resetPassword( newPasswordConfirm,newPassword);
         return ResponseEntity.ok("Password reset successfully");
     }
 
@@ -46,7 +48,7 @@ public class AuthenticationController {
         return ResponseEntity.ok("verified successfully");
     }
     @PostMapping("Resend")
-    public ResponseEntity<String> VerifyCode() {
+    public ResponseEntity<String> ResendCode() {
 
         passwordResetService.resendCode();
         return ResponseEntity.ok("Code was sent successfully");
