@@ -17,19 +17,44 @@ public class PasswordResetService {
     private final UserRepository userRepository;
     private final EmailService emailService;
     private final PasswordEncoder passwordEncoder; // Inject PasswordEncoder
-
-    public void generateResetToken(String email) {
+    private String userEmailToResend="";
+    public void generateResetCode(String email) {
         User user = userRepository.findByEmail(email)
                 .orElseThrow(() -> new RuntimeException("User not found"));
-
+        userEmailToResend=email;
         String code = generateFourDigitNumber();
-        LocalDateTime expiry = LocalDateTime.now().plusHours(1); // Token valid for 1 hour
+        LocalDateTime expiry = LocalDateTime.now().plusMinutes(1); // Token valid for 1 hour
 
         userRepository.updateResetPasswordCode(code, expiry, email);
 
         String resetLink = "Your Verification Code : " + code;
         emailService.sendEmail(email, "Verify yor email address" + resetLink);
     }
+
+
+    public void verifyCode(String code) {
+        User user = userRepository.findByResetPasswordCode(code)
+                .orElseThrow(() -> new RuntimeException("Invalid Code"));
+
+        if (user.getResetPasswordCodeExpiry().isBefore(LocalDateTime.now())) {
+            throw new RuntimeException("Code expired");
+        }
+
+
+        user.setVerified(true);
+        userRepository.save(user);
+    }
+
+    public void resendCode(){
+        String code = generateFourDigitNumber();
+        LocalDateTime expiry = LocalDateTime.now().plusMinutes(1); // Token valid for 1 hour
+
+        userRepository.updateResetPasswordCode(code, expiry,  userEmailToResend);
+
+        String resetLink = "Your Verification Code : " + code;
+        emailService.sendEmail( userEmailToResend, "Verify yor email address" + resetLink);
+    }
+
 
     public void resetPassword(String code, String newPassword) {
         User user = userRepository.findByResetPasswordCode(code)
@@ -39,9 +64,15 @@ public class PasswordResetService {
             throw new RuntimeException("Code expired");
         }
 
+        if (!user.getVerified()) {
+            throw new RuntimeException("User not verified");
+        }
+
         user.setPassword(passwordEncoder.encode(newPassword));
         user.setResetPasswordCode(null);
         user.setResetPasswordCodeExpiry(null);
+        user.setVerified(false);
+        userEmailToResend="";
         userRepository.save(user);
     }
     public static String generateFourDigitNumber() {

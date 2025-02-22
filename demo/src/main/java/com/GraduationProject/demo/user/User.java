@@ -34,6 +34,7 @@ public class User implements UserDetails {
     private Boolean smoker;
     private Boolean haveCancer;
     private String type;
+    private Boolean verified;
     private Boolean haveAFamillyCancer;
     private String familyType ;
     @JsonFormat(pattern = "yyyy-MM-dd")
@@ -44,6 +45,8 @@ public class User implements UserDetails {
 
     private String resetPasswordCode;
     private LocalDateTime resetPasswordCodeExpiry;
+    //@Column(columnDefinition = "boolean default false")
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return List.of(new SimpleGrantedAuthority(role.name()));
