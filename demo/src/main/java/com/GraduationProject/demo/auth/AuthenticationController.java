@@ -26,15 +26,31 @@ public class AuthenticationController {
     }
     @PostMapping("forgot-password")
     public ResponseEntity<String> forgotPassword(@RequestBody Map<String, String> request) {
-        String email = request.get("email"); // Extract email from the request body
-        passwordResetService.generateResetToken(email);
+        String email = request.get("email");
+        passwordResetService.generateResetCode(email);
         return ResponseEntity.ok("Password reset link sent to your email");
     }
     @PostMapping("reset-password")
     public ResponseEntity<String> resetPassword(@RequestBody Map<String, String> request) {
-        String token = request.get("token");
+
         String newPassword = request.get("newPassword");
-        passwordResetService.resetPassword(token, newPassword);
+        String newPasswordConfirm = request.get("newPasswordConfirm");
+
+        passwordResetService.resetPassword( newPasswordConfirm,newPassword);
         return ResponseEntity.ok("Password reset successfully");
+    }
+
+    @PostMapping("Verify")
+    public ResponseEntity<String> VerifyCode(@RequestBody Map<String, String> request) {
+        String code = request.get("code");
+
+        passwordResetService.verifyCode(code);
+        return ResponseEntity.ok("verified successfully");
+    }
+    @PostMapping("Resend")
+    public ResponseEntity<String> ResendCode() {
+
+        passwordResetService.resendCode();
+        return ResponseEntity.ok("Code was sent successfully");
     }
 }
