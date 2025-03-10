@@ -43,7 +43,7 @@ public class ProductIngredientService {
         //  ingredient
         for (Map<String, Object> ingredientData : ingredientsData) {
             String ingredientName = (String) ingredientData.get("ingredientName");
-            Double percentage = (Double) ingredientData.get("percentage");
+            String percentage = (String) ingredientData.get("percentage");
 
             // Check if ingredient exists, or create a new one
             Optional<Ingredient> existingIngredient = ingredientRepository.findByIngredientName(ingredientName);

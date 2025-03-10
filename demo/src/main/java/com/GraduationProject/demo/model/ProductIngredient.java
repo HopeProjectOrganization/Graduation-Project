@@ -25,5 +25,5 @@ public class ProductIngredient {
     @JoinColumn(name = "ingredient_id", nullable = false)
     private Ingredient ingredient;
 
-    private Double percentage;
+    private String percentage;
 }
