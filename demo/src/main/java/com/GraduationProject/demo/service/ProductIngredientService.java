@@ -1,5 +1,6 @@
 package com.GraduationProject.demo.service;
 
+import com.GraduationProject.demo.model.ProductType;
 import com.GraduationProject.demo.model.Ingredient;
 import com.GraduationProject.demo.model.Product;
 import com.GraduationProject.demo.model.ProductIngredient;
@@ -28,6 +29,8 @@ public class ProductIngredientService {
 
         String productName = (String) productData.get("productName");
         String barcode = (String) productData.get("barcode");
+        String typeString = (String) productData.get("productType");
+        ProductType productType = ProductType.valueOf(typeString.toUpperCase());
         List<Map<String, Object>> ingredientsData =
                 (List<Map<String, Object>>) productData.get("ingredients");
 
@@ -37,6 +40,7 @@ public class ProductIngredientService {
             Product newProduct = Product.builder()
                     .productName(productName)
                     .barcode(barcode)
+                    .productType(productType)
                     .build();
             return productRepository.save(newProduct);
         });

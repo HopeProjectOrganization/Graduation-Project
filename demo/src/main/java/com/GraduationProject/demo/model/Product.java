@@ -18,4 +18,6 @@ public class Product {
     private Integer id;
     private String productName;
     private String barcode;
+    @Enumerated(EnumType.STRING)
+    private ProductType productType;
 }

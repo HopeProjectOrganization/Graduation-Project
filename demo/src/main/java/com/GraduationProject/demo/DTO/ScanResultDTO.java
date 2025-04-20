@@ -6,18 +6,14 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class ScanResult {
+public class ScanResultDTO {
     private String message;
     private Product product;
-    private List<HighRiskIngredients> highRiskIngredients;
-
-    public ScanResult(String message, Product product) {
-        this.message = message;
-        this.product = product;
-    }
+    private List<IngredientRiskDTO> highRiskIngredients;
 }

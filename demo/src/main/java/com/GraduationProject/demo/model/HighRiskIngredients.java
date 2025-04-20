@@ -18,7 +18,18 @@ public class HighRiskIngredients {
     private Integer id;
     @Column(nullable = false, unique = true)
     private String ingredientName;
-    private Double percentage;
+
+    @Column(nullable = false)
+    private String riskLevel;
+
+    private String safeLimit;
+
+    @Column(nullable = false, length = 2000)
+    private String English_description;
+
+    @Column(nullable = false, length = 2000)
+    private String Arabic_description;
+
 }
 
 
