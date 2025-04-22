@@ -29,7 +29,7 @@ public class UserServices {
         User user = userRepository.findByEmail(currentEmail)
                 .orElseThrow(() -> new UsernameNotFoundException("User not found"));
 
-        // Check for email conflict
+        // lw he8er el email el email el gded mwgod fe el data base 2bl kda wla eh ?
         if (request.getEmail() != null && !request.getEmail().equals(currentEmail)) {
             Optional<User> existing = userRepository.findByEmail(request.getEmail());
             if (existing.isPresent()) {
@@ -49,7 +49,7 @@ public class UserServices {
             user.setPassword(passwordEncoder.encode(request.getNewPassword()));
         }
 
-        // Other optional fields
+        if (request.getImageId() != null) user.setImageId(request.getImageId());
         if (request.getIsMale() != null) user.setIsMale(request.getIsMale());
         if (request.getSmoker() != null) user.setSmoker(request.getSmoker());
         if (request.getHaveCancer() != null) user.setHaveCancer(request.getHaveCancer());

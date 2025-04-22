@@ -10,6 +10,7 @@ public class UpdateProfileRequest {
     private String phone;
     private String oldPassword;
     private String newPassword;
+    private String imageId;
 
     // Optional: Include other profile fields you want updated
     private Boolean isMale;
