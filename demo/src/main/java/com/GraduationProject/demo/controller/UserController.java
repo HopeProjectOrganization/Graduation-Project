@@ -1,6 +1,7 @@
 package com.GraduationProject.demo.controller;
 
 
+import com.GraduationProject.demo.DTO.UpdateProfileRequest;
 import com.GraduationProject.demo.service.UserServices;
 import com.GraduationProject.demo.user.User;
 import lombok.RequiredArgsConstructor;
@@ -20,9 +21,22 @@ public class UserController {
         return ResponseEntity.ok(userService.getProfile(email));
     }
 
+
     @PutMapping
-    public ResponseEntity<User> updateProfile(@RequestBody User updatedUser, Authentication authentication) {
+    public ResponseEntity<?> updateProfile(@RequestBody UpdateProfileRequest request,
+                                           Authentication authentication) {
         String email = authentication.getName();
-        return ResponseEntity.ok(userService.updateProfile(email, updatedUser));
+        try {
+            User updatedUser = userService.updateProfile(email, request);
+            return ResponseEntity.ok(updatedUser);
+        } catch (IllegalArgumentException e) {
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
     }
+
+//    @PutMapping
+//    public ResponseEntity<User> updateProfile(@RequestBody User updatedUser, Authentication authentication) {
+//        String email = authentication.getName();
+//        return ResponseEntity.ok(userService.updateProfile(email, updatedUser));
+//    }
 }
