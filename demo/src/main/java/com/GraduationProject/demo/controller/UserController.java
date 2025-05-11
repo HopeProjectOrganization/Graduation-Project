@@ -34,6 +34,15 @@ public class UserController {
         }
     }
 
+    @DeleteMapping()
+    public ResponseEntity<String> deleteMyAccount(Authentication authentication) {
+        String email = authentication.getName();
+        userService.deleteUserByEmail(email);
+        return ResponseEntity.ok("Your account has been deleted successfully.");
+    }
+
+
+
 //    @PutMapping
 //    public ResponseEntity<User> updateProfile(@RequestBody User updatedUser, Authentication authentication) {
 //        String email = authentication.getName();

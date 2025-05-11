@@ -23,6 +23,11 @@ public class UserServices {
         return user;
     }
 
+    public void deleteUserByEmail(String email) {
+        User user = userRepository.findByEmail(email)
+                .orElseThrow(() -> new RuntimeException("User not found with email: " + email));
+        userRepository.delete(user);
+    }
 
 
     public User updateProfile(String currentEmail, UpdateProfileRequest request) {
