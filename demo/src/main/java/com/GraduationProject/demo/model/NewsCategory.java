@@ -7,6 +7,7 @@ public enum NewsCategory {
     BREAST,
     OVARIAN,
     PROSTATE,
+    Colorectal,
     MELANOMA;
 
 

@@ -13,7 +13,7 @@ public class OpenRouterService {
 
     private final WebClient webClient;
 
-    private static final String API_KEY = "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";
+    private static final String API_KEY = "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";
     private static final String API_URL = "https://openrouter.ai/api/v1/chat/completions";
 
     public OpenRouterService(WebClient.Builder webClientBuilder) {
