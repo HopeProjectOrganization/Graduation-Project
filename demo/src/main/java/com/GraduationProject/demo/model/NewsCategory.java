@@ -7,10 +7,27 @@ public enum NewsCategory {
     BREAST,
     OVARIAN,
     PROSTATE,
-    Colorectal,
-    MELANOMA;
-
-
+    COLORECTAL,
+    MELANOMA,
+    LUNG,
+    SKIN,
+    PANCREATIC,
+    LEUKEMIA,
+    LYMPHOMA,
+    BRAIN,
+    LIVER,
+    STOMACH,
+    ESOPHAGEAL,
+    BLADDER,
+    KIDNEY,
+    THYROID,
+    BONE,
+    TESTICULAR,
+    ENDOMETRIAL,
+    CERVICAL,
+    GALLBLADDER,
+    MULTIPLE_MYELOMA,
+    ORAL;
 
     //2st5dmt de 34an mkn4 rade ehndl el uppercase fe el edit
     @JsonCreator

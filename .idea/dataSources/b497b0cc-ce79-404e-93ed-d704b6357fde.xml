@@ -3,7 +3,7 @@
   <database-model serializer="dbm" dbms="POSTGRES" family-id="POSTGRES" format-version="4.53">
     <root id="1">
       <DateStyle>mdy</DateStyle>
-      <IntrospectionStateNumber>928</IntrospectionStateNumber>
+      <IntrospectionStateNumber>957</IntrospectionStateNumber>
       <ServerVersion>17.2</ServerVersion>
       <StartupTime>1746619873</StartupTime>
       <TimeZones>true ACDT
@@ -801,7 +801,7 @@ false Zulu
 14751||10|C|G
 14751||-9223372036854775808|U|G
 14751||10|U|G</Grants>
-      <IntrospectionStateNumber>928</IntrospectionStateNumber>
+      <IntrospectionStateNumber>957</IntrospectionStateNumber>
       <ObjectId>5</ObjectId>
       <OwnerName>postgres</OwnerName>
     </database>
@@ -4227,8 +4227,8 @@ false Zulu
     <schema id="265" parent="2" name="public">
       <Comment>standard public schema</Comment>
       <Current>1</Current>
-      <IntrospectionStateNumber>928</IntrospectionStateNumber>
-      <LastIntrospectionLocalTimestamp>2025-05-12.12:43:54</LastIntrospectionLocalTimestamp>
+      <IntrospectionStateNumber>957</IntrospectionStateNumber>
+      <LastIntrospectionLocalTimestamp>2025-05-13.14:28:05</LastIntrospectionLocalTimestamp>
       <ObjectId>2200</ObjectId>
       <StateNumber>532</StateNumber>
       <OwnerName>pg_database_owner</OwnerName>
@@ -4250,10 +4250,10 @@ false Zulu
       <OwnerName>postgres</OwnerName>
     </sequence>
     <sequence id="268" parent="265" name="hereditary_people_id_seq">
-      <ObjectId>40988</ObjectId>
+      <ObjectId>41024</ObjectId>
       <SequenceIdentity>1</SequenceIdentity>
       <StartValue>1</StartValue>
-      <StateNumber>921</StateNumber>
+      <StateNumber>950</StateNumber>
       <StoredType>bigint|0s</StoredType>
       <OwnerName>postgres</OwnerName>
     </sequence>
@@ -4265,7 +4265,15 @@ false Zulu
       <StoredType>integer|0s</StoredType>
       <OwnerName>postgres</OwnerName>
     </sequence>
-    <sequence id="270" parent="265" name="ingredient_id_seq">
+    <sequence id="270" parent="265" name="high_risk_person_id_seq">
+      <ObjectId>41015</ObjectId>
+      <SequenceIdentity>1</SequenceIdentity>
+      <StartValue>1</StartValue>
+      <StateNumber>943</StateNumber>
+      <StoredType>bigint|0s</StoredType>
+      <OwnerName>postgres</OwnerName>
+    </sequence>
+    <sequence id="271" parent="265" name="ingredient_id_seq">
       <ObjectId>16403</ObjectId>
       <SequenceIdentity>1</SequenceIdentity>
       <StartValue>1</StartValue>
@@ -4273,15 +4281,15 @@ false Zulu
       <StoredType>integer|0s</StoredType>
       <OwnerName>postgres</OwnerName>
     </sequence>
-    <sequence id="271" parent="265" name="news_id_seq">
-      <ObjectId>32787</ObjectId>
+    <sequence id="272" parent="265" name="news_id_seq">
+      <ObjectId>41033</ObjectId>
       <SequenceIdentity>1</SequenceIdentity>
       <StartValue>1</StartValue>
-      <StateNumber>880</StateNumber>
+      <StateNumber>956</StateNumber>
       <StoredType>bigint|0s</StoredType>
       <OwnerName>postgres</OwnerName>
     </sequence>
-    <sequence id="272" parent="265" name="places_id_seq">
+    <sequence id="273" parent="265" name="places_id_seq">
       <ObjectId>32798</ObjectId>
       <SequenceIdentity>1</SequenceIdentity>
       <StartValue>1</StartValue>
@@ -4289,7 +4297,7 @@ false Zulu
       <StoredType>integer|0s</StoredType>
       <OwnerName>postgres</OwnerName>
     </sequence>
-    <sequence id="273" parent="265" name="product_id_seq">
+    <sequence id="274" parent="265" name="product_id_seq">
       <ObjectId>16409</ObjectId>
       <SequenceIdentity>1</SequenceIdentity>
       <StartValue>1</StartValue>
@@ -4297,7 +4305,7 @@ false Zulu
       <StoredType>integer|0s</StoredType>
       <OwnerName>postgres</OwnerName>
     </sequence>
-    <sequence id="274" parent="265" name="product_ingredient_id_seq">
+    <sequence id="275" parent="265" name="product_ingredient_id_seq">
       <ObjectId>16417</ObjectId>
       <SequenceIdentity>1</SequenceIdentity>
       <StartValue>1</StartValue>
@@ -4305,7 +4313,7 @@ false Zulu
       <StoredType>integer|0s</StoredType>
       <OwnerName>postgres</OwnerName>
     </sequence>
-    <sequence id="275" parent="265" name="user_product_id_seq">
+    <sequence id="276" parent="265" name="user_product_id_seq">
       <ObjectId>16423</ObjectId>
       <SequenceIdentity>1</SequenceIdentity>
       <StartValue>1</StartValue>
@@ -4313,73 +4321,79 @@ false Zulu
       <StoredType>integer|0s</StoredType>
       <OwnerName>postgres</OwnerName>
     </sequence>
-    <table id="276" parent="265" name="_user">
+    <table id="277" parent="265" name="_user">
       <ObjectId>16395</ObjectId>
       <StateNumber>907</StateNumber>
       <AccessMethodId>2</AccessMethodId>
       <OwnerName>postgres</OwnerName>
     </table>
-    <table id="277" parent="265" name="healthy_diet">
+    <table id="278" parent="265" name="healthy_diet">
       <ObjectId>40998</ObjectId>
       <StateNumber>927</StateNumber>
       <AccessMethodId>2</AccessMethodId>
       <OwnerName>postgres</OwnerName>
     </table>
-    <table id="278" parent="265" name="hereditary_people">
-      <ObjectId>40989</ObjectId>
-      <StateNumber>921</StateNumber>
+    <table id="279" parent="265" name="hereditary_people">
+      <ObjectId>41025</ObjectId>
+      <StateNumber>950</StateNumber>
       <AccessMethodId>2</AccessMethodId>
       <OwnerName>postgres</OwnerName>
     </table>
-    <table id="279" parent="265" name="high_risk_ingredients">
+    <table id="280" parent="265" name="high_risk_ingredients">
       <ObjectId>16454</ObjectId>
       <StateNumber>895</StateNumber>
       <AccessMethodId>2</AccessMethodId>
       <OwnerName>postgres</OwnerName>
     </table>
-    <table id="280" parent="265" name="ingredient">
+    <table id="281" parent="265" name="high_risk_person">
+      <ObjectId>41016</ObjectId>
+      <StateNumber>943</StateNumber>
+      <AccessMethodId>2</AccessMethodId>
+      <OwnerName>postgres</OwnerName>
+    </table>
+    <table id="282" parent="265" name="ingredient">
       <ObjectId>16404</ObjectId>
       <StateNumber>780</StateNumber>
       <AccessMethodId>2</AccessMethodId>
       <OwnerName>postgres</OwnerName>
     </table>
-    <table id="281" parent="265" name="news">
-      <ObjectId>32788</ObjectId>
-      <StateNumber>880</StateNumber>
+    <table id="283" parent="265" name="news">
+      <ObjectId>41034</ObjectId>
+      <StateNumber>956</StateNumber>
       <AccessMethodId>2</AccessMethodId>
       <OwnerName>postgres</OwnerName>
     </table>
-    <table id="282" parent="265" name="places">
+    <table id="284" parent="265" name="places">
       <ObjectId>32799</ObjectId>
       <StateNumber>896</StateNumber>
       <AccessMethodId>2</AccessMethodId>
       <OwnerName>postgres</OwnerName>
     </table>
-    <table id="283" parent="265" name="product">
+    <table id="285" parent="265" name="product">
       <ObjectId>16410</ObjectId>
       <StateNumber>897</StateNumber>
       <AccessMethodId>2</AccessMethodId>
       <OwnerName>postgres</OwnerName>
     </table>
-    <table id="284" parent="265" name="product_ingredient">
+    <table id="286" parent="265" name="product_ingredient">
       <ObjectId>16418</ObjectId>
       <StateNumber>837</StateNumber>
       <AccessMethodId>2</AccessMethodId>
       <OwnerName>postgres</OwnerName>
     </table>
-    <table id="285" parent="265" name="user_product">
+    <table id="287" parent="265" name="user_product">
       <ObjectId>16424</ObjectId>
       <StateNumber>855</StateNumber>
       <AccessMethodId>2</AccessMethodId>
       <OwnerName>postgres</OwnerName>
     </table>
-    <check id="286" parent="276" name="_user_role_check">
+    <check id="288" parent="277" name="_user_role_check">
       <ColNames>role</ColNames>
       <ObjectId>16402</ObjectId>
       <Predicate>(role)::text = ANY ((ARRAY[&apos;ADMIN&apos;::character varying, &apos;DOCTOR&apos;::character varying, &apos;USER&apos;::character varying])::text[])</Predicate>
       <StateNumber>746</StateNumber>
     </check>
-    <column id="287" parent="276" name="id">
+    <column id="289" parent="277" name="id">
       <IdentityKind>by-default</IdentityKind>
       <NotNull>1</NotNull>
       <Position>1</Position>
@@ -4388,121 +4402,121 @@ false Zulu
       <SequenceId>16394</SequenceId>
       <TypeId>23</TypeId>
     </column>
-    <column id="288" parent="276" name="date_of_birth">
+    <column id="290" parent="277" name="date_of_birth">
       <Position>2</Position>
       <StateNumber>744</StateNumber>
       <StoredType>date|0s</StoredType>
       <TypeId>1082</TypeId>
     </column>
-    <column id="289" parent="276" name="email">
+    <column id="291" parent="277" name="email">
       <Position>3</Position>
       <StateNumber>744</StateNumber>
       <StoredType>varchar(255)|0s</StoredType>
       <TypeId>1043</TypeId>
     </column>
-    <column id="290" parent="276" name="family_type">
+    <column id="292" parent="277" name="family_type">
       <Position>4</Position>
       <StateNumber>744</StateNumber>
       <StoredType>varchar(255)|0s</StoredType>
       <TypeId>1043</TypeId>
     </column>
-    <column id="291" parent="276" name="haveafamilly_cancer">
+    <column id="293" parent="277" name="haveafamilly_cancer">
       <Position>5</Position>
       <StateNumber>744</StateNumber>
       <StoredType>boolean|0s</StoredType>
       <TypeId>16</TypeId>
     </column>
-    <column id="292" parent="276" name="have_cancer">
+    <column id="294" parent="277" name="have_cancer">
       <Position>6</Position>
       <StateNumber>744</StateNumber>
       <StoredType>boolean|0s</StoredType>
       <TypeId>16</TypeId>
     </column>
-    <column id="293" parent="276" name="is_male">
+    <column id="295" parent="277" name="is_male">
       <Position>7</Position>
       <StateNumber>744</StateNumber>
       <StoredType>boolean|0s</StoredType>
       <TypeId>16</TypeId>
     </column>
-    <column id="294" parent="276" name="name">
+    <column id="296" parent="277" name="name">
       <Position>8</Position>
       <StateNumber>744</StateNumber>
       <StoredType>varchar(255)|0s</StoredType>
       <TypeId>1043</TypeId>
     </column>
-    <column id="295" parent="276" name="password">
+    <column id="297" parent="277" name="password">
       <Position>9</Position>
       <StateNumber>744</StateNumber>
       <StoredType>varchar(255)|0s</StoredType>
       <TypeId>1043</TypeId>
     </column>
-    <column id="296" parent="276" name="phone">
+    <column id="298" parent="277" name="phone">
       <Position>10</Position>
       <StateNumber>744</StateNumber>
       <StoredType>varchar(255)|0s</StoredType>
       <TypeId>1043</TypeId>
     </column>
-    <column id="297" parent="276" name="smoker">
+    <column id="299" parent="277" name="smoker">
       <Position>11</Position>
       <StateNumber>744</StateNumber>
       <StoredType>boolean|0s</StoredType>
       <TypeId>16</TypeId>
     </column>
-    <column id="298" parent="276" name="type">
+    <column id="300" parent="277" name="type">
       <Position>12</Position>
       <StateNumber>744</StateNumber>
       <StoredType>varchar(255)|0s</StoredType>
       <TypeId>1043</TypeId>
     </column>
-    <column id="299" parent="276" name="role">
+    <column id="301" parent="277" name="role">
       <Position>13</Position>
       <StateNumber>746</StateNumber>
       <StoredType>varchar(255)|0s</StoredType>
       <TypeId>1043</TypeId>
     </column>
-    <column id="300" parent="276" name="username">
+    <column id="302" parent="277" name="username">
       <Position>14</Position>
       <StateNumber>747</StateNumber>
       <StoredType>varchar(255)|0s</StoredType>
       <TypeId>1043</TypeId>
     </column>
-    <column id="301" parent="276" name="reset_password_token">
+    <column id="303" parent="277" name="reset_password_token">
       <Position>15</Position>
       <StateNumber>761</StateNumber>
       <StoredType>varchar(255)|0s</StoredType>
       <TypeId>1043</TypeId>
     </column>
-    <column id="302" parent="276" name="reset_password_token_expiry">
+    <column id="304" parent="277" name="reset_password_token_expiry">
       <Position>16</Position>
       <StateNumber>762</StateNumber>
       <StoredType>timestamp(6)|0s</StoredType>
       <TypeId>1114</TypeId>
     </column>
-    <column id="303" parent="276" name="reset_password_code">
+    <column id="305" parent="277" name="reset_password_code">
       <Position>17</Position>
       <StateNumber>809</StateNumber>
       <StoredType>varchar(255)|0s</StoredType>
       <TypeId>1043</TypeId>
     </column>
-    <column id="304" parent="276" name="reset_password_code_expiry">
+    <column id="306" parent="277" name="reset_password_code_expiry">
       <Position>18</Position>
       <StateNumber>810</StateNumber>
       <StoredType>timestamp(6)|0s</StoredType>
       <TypeId>1114</TypeId>
     </column>
-    <column id="305" parent="276" name="verified">
+    <column id="307" parent="277" name="verified">
       <Position>19</Position>
       <StateNumber>811</StateNumber>
       <StoredType>boolean|0s</StoredType>
       <TypeId>16</TypeId>
     </column>
-    <column id="306" parent="276" name="image_id">
+    <column id="308" parent="277" name="image_id">
       <Position>20</Position>
       <StateNumber>907</StateNumber>
       <StoredType>varchar(255)|0s</StoredType>
       <TypeId>1043</TypeId>
     </column>
-    <index id="307" parent="276" name="_user_pkey">
+    <index id="309" parent="277" name="_user_pkey">
       <ColNames>id</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>16400</ObjectId>
@@ -4511,20 +4525,20 @@ false Zulu
       <Unique>1</Unique>
       <AccessMethodId>403</AccessMethodId>
     </index>
-    <key id="308" parent="276" name="_user_pkey">
+    <key id="310" parent="277" name="_user_pkey">
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>16401</ObjectId>
       <Primary>1</Primary>
       <StateNumber>744</StateNumber>
       <UnderlyingIndexId>16400</UnderlyingIndexId>
     </key>
-    <check id="309" parent="277" name="healthy_diet_category_check">
+    <check id="311" parent="278" name="healthy_diet_category_check">
       <ColNames>category</ColNames>
       <ObjectId>41001</ObjectId>
       <Predicate>(category)::text = ANY ((ARRAY[&apos;RECOMMENDED_FOODS&apos;::character varying, &apos;RECIPES&apos;::character varying, &apos;HELPFUL_FOODS&apos;::character varying, &apos;BAD_FOODS&apos;::character varying])::text[])</Predicate>
       <StateNumber>927</StateNumber>
     </check>
-    <column id="310" parent="277" name="id">
+    <column id="312" parent="278" name="id">
       <IdentityKind>by-default</IdentityKind>
       <NotNull>1</NotNull>
       <Position>1</Position>
@@ -4533,31 +4547,31 @@ false Zulu
       <SequenceId>40997</SequenceId>
       <TypeId>20</TypeId>
     </column>
-    <column id="311" parent="277" name="category">
+    <column id="313" parent="278" name="category">
       <Position>2</Position>
       <StateNumber>927</StateNumber>
       <StoredType>varchar(255)|0s</StoredType>
       <TypeId>1043</TypeId>
     </column>
-    <column id="312" parent="277" name="description">
+    <column id="314" parent="278" name="description">
       <Position>3</Position>
       <StateNumber>927</StateNumber>
       <StoredType>varchar(255)|0s</StoredType>
       <TypeId>1043</TypeId>
     </column>
-    <column id="313" parent="277" name="image_url">
+    <column id="315" parent="278" name="image_url">
       <Position>4</Position>
       <StateNumber>927</StateNumber>
       <StoredType>varchar(255)|0s</StoredType>
       <TypeId>1043</TypeId>
     </column>
-    <column id="314" parent="277" name="title">
+    <column id="316" parent="278" name="title">
       <Position>5</Position>
       <StateNumber>927</StateNumber>
       <StoredType>varchar(255)|0s</StoredType>
       <TypeId>1043</TypeId>
     </column>
-    <index id="315" parent="277" name="healthy_diet_pkey">
+    <index id="317" parent="278" name="healthy_diet_pkey">
       <ColNames>id</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>41004</ObjectId>
@@ -4566,75 +4580,75 @@ false Zulu
       <Unique>1</Unique>
       <AccessMethodId>403</AccessMethodId>
     </index>
-    <key id="316" parent="277" name="healthy_diet_pkey">
+    <key id="318" parent="278" name="healthy_diet_pkey">
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>41005</ObjectId>
       <Primary>1</Primary>
       <StateNumber>927</StateNumber>
       <UnderlyingIndexId>41004</UnderlyingIndexId>
     </key>
-    <check id="317" parent="278" name="hereditary_people_category_check">
+    <check id="319" parent="279" name="hereditary_people_category_check">
       <ColNames>category</ColNames>
-      <ObjectId>40992</ObjectId>
-      <Predicate>(category)::text = ANY ((ARRAY[&apos;ALL&apos;::character varying, &apos;BREAST&apos;::character varying, &apos;OVARIAN&apos;::character varying, &apos;PROSTATE&apos;::character varying, &apos;Colorectal&apos;::character varying, &apos;MELANOMA&apos;::character varying])::text[])</Predicate>
-      <StateNumber>921</StateNumber>
+      <ObjectId>41028</ObjectId>
+      <Predicate>(category)::text = ANY ((ARRAY[&apos;ALL&apos;::character varying, &apos;BREAST&apos;::character varying, &apos;OVARIAN&apos;::character varying, &apos;PROSTATE&apos;::character varying, &apos;COLORECTAL&apos;::character varying, &apos;MELANOMA&apos;::character varying, &apos;LUNG&apos;::character varying, &apos;SKIN&apos;::character varying, &apos;PANCREATIC&apos;::character varying, &apos;LEUKEMIA&apos;::character varying, &apos;LYMPHOMA&apos;::character varying, &apos;BRAIN&apos;::character varying, &apos;LIVER&apos;::character varying, &apos;STOMACH&apos;::character varying, &apos;ESOPHAGEAL&apos;::character varying, &apos;BLADDER&apos;::character varying, &apos;KIDNEY&apos;::character varying, &apos;THYROID&apos;::character varying, &apos;BONE&apos;::character varying, &apos;TESTICULAR&apos;::character varying, &apos;ENDOMETRIAL&apos;::character varying, &apos;CERVICAL&apos;::character varying, &apos;GALLBLADDER&apos;::character varying, &apos;MULTIPLE_MYELOMA&apos;::character varying, &apos;ORAL&apos;::character varying])::text[])</Predicate>
+      <StateNumber>950</StateNumber>
     </check>
-    <column id="318" parent="278" name="id">
+    <column id="320" parent="279" name="id">
       <IdentityKind>by-default</IdentityKind>
       <NotNull>1</NotNull>
       <Position>1</Position>
-      <StateNumber>921</StateNumber>
+      <StateNumber>950</StateNumber>
       <StoredType>bigint|0s</StoredType>
-      <SequenceId>40988</SequenceId>
+      <SequenceId>41024</SequenceId>
       <TypeId>20</TypeId>
     </column>
-    <column id="319" parent="278" name="category">
+    <column id="321" parent="279" name="category">
       <Position>2</Position>
-      <StateNumber>921</StateNumber>
+      <StateNumber>950</StateNumber>
       <StoredType>varchar(255)|0s</StoredType>
       <TypeId>1043</TypeId>
     </column>
-    <column id="320" parent="278" name="content">
+    <column id="322" parent="279" name="content">
       <Position>3</Position>
-      <StateNumber>921</StateNumber>
+      <StateNumber>950</StateNumber>
       <StoredType>varchar(255)|0s</StoredType>
       <TypeId>1043</TypeId>
     </column>
-    <column id="321" parent="278" name="date">
+    <column id="323" parent="279" name="date">
       <Position>4</Position>
-      <StateNumber>921</StateNumber>
+      <StateNumber>950</StateNumber>
       <StoredType>date|0s</StoredType>
       <TypeId>1082</TypeId>
     </column>
-    <column id="322" parent="278" name="image_url">
+    <column id="324" parent="279" name="image_url">
       <Position>5</Position>
-      <StateNumber>921</StateNumber>
+      <StateNumber>950</StateNumber>
       <StoredType>varchar(255)|0s</StoredType>
       <TypeId>1043</TypeId>
     </column>
-    <column id="323" parent="278" name="title">
+    <column id="325" parent="279" name="title">
       <Position>6</Position>
-      <StateNumber>921</StateNumber>
+      <StateNumber>950</StateNumber>
       <StoredType>varchar(255)|0s</StoredType>
       <TypeId>1043</TypeId>
     </column>
-    <index id="324" parent="278" name="hereditary_people_pkey">
+    <index id="326" parent="279" name="hereditary_people_pkey">
       <ColNames>id</ColNames>
       <NameSurrogate>1</NameSurrogate>
-      <ObjectId>40995</ObjectId>
+      <ObjectId>41031</ObjectId>
       <Primary>1</Primary>
-      <StateNumber>921</StateNumber>
+      <StateNumber>950</StateNumber>
       <Unique>1</Unique>
       <AccessMethodId>403</AccessMethodId>
     </index>
-    <key id="325" parent="278" name="hereditary_people_pkey">
+    <key id="327" parent="279" name="hereditary_people_pkey">
       <NameSurrogate>1</NameSurrogate>
-      <ObjectId>40996</ObjectId>
+      <ObjectId>41032</ObjectId>
       <Primary>1</Primary>
-      <StateNumber>921</StateNumber>
-      <UnderlyingIndexId>40995</UnderlyingIndexId>
+      <StateNumber>950</StateNumber>
+      <UnderlyingIndexId>41031</UnderlyingIndexId>
     </key>
-    <column id="326" parent="279" name="id">
+    <column id="328" parent="280" name="id">
       <IdentityKind>by-default</IdentityKind>
       <NotNull>1</NotNull>
       <Position>1</Position>
@@ -4643,47 +4657,47 @@ false Zulu
       <SequenceId>16453</SequenceId>
       <TypeId>23</TypeId>
     </column>
-    <column id="327" parent="279" name="ingredient_name">
+    <column id="329" parent="280" name="ingredient_name">
       <NotNull>1</NotNull>
       <Position>2</Position>
       <StateNumber>843</StateNumber>
       <StoredType>varchar(255)|0s</StoredType>
       <TypeId>1043</TypeId>
     </column>
-    <column id="328" parent="279" name="percentage">
+    <column id="330" parent="280" name="percentage">
       <Position>3</Position>
       <StateNumber>843</StateNumber>
       <StoredType>double precision|0s</StoredType>
       <TypeId>701</TypeId>
     </column>
-    <column id="329" parent="279" name="arabic_description">
+    <column id="331" parent="280" name="arabic_description">
       <NotNull>1</NotNull>
       <Position>4</Position>
       <StateNumber>892</StateNumber>
       <StoredType>varchar(2000)|0s</StoredType>
       <TypeId>1043</TypeId>
     </column>
-    <column id="330" parent="279" name="english_description">
+    <column id="332" parent="280" name="english_description">
       <NotNull>1</NotNull>
       <Position>5</Position>
       <StateNumber>893</StateNumber>
       <StoredType>varchar(2000)|0s</StoredType>
       <TypeId>1043</TypeId>
     </column>
-    <column id="331" parent="279" name="risk_level">
+    <column id="333" parent="280" name="risk_level">
       <NotNull>1</NotNull>
       <Position>6</Position>
       <StateNumber>894</StateNumber>
       <StoredType>varchar(255)|0s</StoredType>
       <TypeId>1043</TypeId>
     </column>
-    <column id="332" parent="279" name="safe_limit">
+    <column id="334" parent="280" name="safe_limit">
       <Position>7</Position>
       <StateNumber>895</StateNumber>
       <StoredType>varchar(255)|0s</StoredType>
       <TypeId>1043</TypeId>
     </column>
-    <index id="333" parent="279" name="high_risk_ingredients_pkey">
+    <index id="335" parent="280" name="high_risk_ingredients_pkey">
       <ColNames>id</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>16457</ObjectId>
@@ -4692,7 +4706,7 @@ false Zulu
       <Unique>1</Unique>
       <AccessMethodId>403</AccessMethodId>
     </index>
-    <index id="334" parent="279" name="ukog6kdlee9673auguth7ddy943">
+    <index id="336" parent="280" name="ukog6kdlee9673auguth7ddy943">
       <ColNames>ingredient_name</ColNames>
       <ObjectId>16459</ObjectId>
       <StateNumber>846</StateNumber>
@@ -4702,19 +4716,74 @@ false Zulu
       <CollationIds>100</CollationIds>
       <CollationParentNames>pg_catalog</CollationParentNames>
     </index>
-    <key id="335" parent="279" name="high_risk_ingredients_pkey">
+    <key id="337" parent="280" name="high_risk_ingredients_pkey">
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>16458</ObjectId>
       <Primary>1</Primary>
       <StateNumber>843</StateNumber>
       <UnderlyingIndexId>16457</UnderlyingIndexId>
     </key>
-    <key id="336" parent="279" name="ukog6kdlee9673auguth7ddy943">
+    <key id="338" parent="280" name="ukog6kdlee9673auguth7ddy943">
       <ObjectId>16460</ObjectId>
       <StateNumber>846</StateNumber>
       <UnderlyingIndexId>16459</UnderlyingIndexId>
     </key>
-    <column id="337" parent="280" name="id">
+    <check id="339" parent="281" name="high_risk_person_category_check">
+      <ColNames>category</ColNames>
+      <ObjectId>41019</ObjectId>
+      <Predicate>(category)::text = ANY ((ARRAY[&apos;ELDERLY&apos;::character varying, &apos;PREGNANT&apos;::character varying, &apos;WEAK_IMMUNE_SYSTEM&apos;::character varying, &apos;SMOKERS&apos;::character varying, &apos;OBESE&apos;::character varying, &apos;GENETIC_MUTATION&apos;::character varying, &apos;INACTIVE&apos;::character varying, &apos;CHEMICAL_EXPOSURE&apos;::character varying, &apos;POLLUTED_AREAS&apos;::character varying])::text[])</Predicate>
+      <StateNumber>943</StateNumber>
+    </check>
+    <column id="340" parent="281" name="id">
+      <IdentityKind>by-default</IdentityKind>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+      <StateNumber>943</StateNumber>
+      <StoredType>bigint|0s</StoredType>
+      <SequenceId>41015</SequenceId>
+      <TypeId>20</TypeId>
+    </column>
+    <column id="341" parent="281" name="category">
+      <Position>2</Position>
+      <StateNumber>943</StateNumber>
+      <StoredType>varchar(255)|0s</StoredType>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="342" parent="281" name="description">
+      <Position>3</Position>
+      <StateNumber>943</StateNumber>
+      <StoredType>varchar(255)|0s</StoredType>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="343" parent="281" name="image_url">
+      <Position>4</Position>
+      <StateNumber>943</StateNumber>
+      <StoredType>varchar(255)|0s</StoredType>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="344" parent="281" name="title">
+      <Position>5</Position>
+      <StateNumber>943</StateNumber>
+      <StoredType>varchar(255)|0s</StoredType>
+      <TypeId>1043</TypeId>
+    </column>
+    <index id="345" parent="281" name="high_risk_person_pkey">
+      <ColNames>id</ColNames>
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>41022</ObjectId>
+      <Primary>1</Primary>
+      <StateNumber>943</StateNumber>
+      <Unique>1</Unique>
+      <AccessMethodId>403</AccessMethodId>
+    </index>
+    <key id="346" parent="281" name="high_risk_person_pkey">
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>41023</ObjectId>
+      <Primary>1</Primary>
+      <StateNumber>943</StateNumber>
+      <UnderlyingIndexId>41022</UnderlyingIndexId>
+    </key>
+    <column id="347" parent="282" name="id">
       <IdentityKind>by-default</IdentityKind>
       <NotNull>1</NotNull>
       <Position>1</Position>
@@ -4723,13 +4792,13 @@ false Zulu
       <SequenceId>16403</SequenceId>
       <TypeId>23</TypeId>
     </column>
-    <column id="338" parent="280" name="ingredient_name">
+    <column id="348" parent="282" name="ingredient_name">
       <Position>2</Position>
       <StateNumber>776</StateNumber>
       <StoredType>varchar(255)|0s</StoredType>
       <TypeId>1043</TypeId>
     </column>
-    <index id="339" parent="280" name="ingredient_pkey">
+    <index id="349" parent="282" name="ingredient_pkey">
       <ColNames>id</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>16407</ObjectId>
@@ -4738,69 +4807,69 @@ false Zulu
       <Unique>1</Unique>
       <AccessMethodId>403</AccessMethodId>
     </index>
-    <key id="340" parent="280" name="ingredient_pkey">
+    <key id="350" parent="282" name="ingredient_pkey">
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>16408</ObjectId>
       <Primary>1</Primary>
       <StateNumber>776</StateNumber>
       <UnderlyingIndexId>16407</UnderlyingIndexId>
     </key>
-    <check id="341" parent="281" name="news_category_check">
+    <check id="351" parent="283" name="news_category_check">
       <ColNames>category</ColNames>
-      <ObjectId>32791</ObjectId>
-      <Predicate>(category)::text = ANY ((ARRAY[&apos;ALL&apos;::character varying, &apos;BREAST&apos;::character varying, &apos;OVARIAN&apos;::character varying, &apos;PROSTATE&apos;::character varying, &apos;MELANOMA&apos;::character varying])::text[])</Predicate>
-      <StateNumber>880</StateNumber>
+      <ObjectId>41037</ObjectId>
+      <Predicate>(category)::text = ANY ((ARRAY[&apos;ALL&apos;::character varying, &apos;BREAST&apos;::character varying, &apos;OVARIAN&apos;::character varying, &apos;PROSTATE&apos;::character varying, &apos;COLORECTAL&apos;::character varying, &apos;MELANOMA&apos;::character varying, &apos;LUNG&apos;::character varying, &apos;SKIN&apos;::character varying, &apos;PANCREATIC&apos;::character varying, &apos;LEUKEMIA&apos;::character varying, &apos;LYMPHOMA&apos;::character varying, &apos;BRAIN&apos;::character varying, &apos;LIVER&apos;::character varying, &apos;STOMACH&apos;::character varying, &apos;ESOPHAGEAL&apos;::character varying, &apos;BLADDER&apos;::character varying, &apos;KIDNEY&apos;::character varying, &apos;THYROID&apos;::character varying, &apos;BONE&apos;::character varying, &apos;TESTICULAR&apos;::character varying, &apos;ENDOMETRIAL&apos;::character varying, &apos;CERVICAL&apos;::character varying, &apos;GALLBLADDER&apos;::character varying, &apos;MULTIPLE_MYELOMA&apos;::character varying, &apos;ORAL&apos;::character varying])::text[])</Predicate>
+      <StateNumber>956</StateNumber>
     </check>
-    <column id="342" parent="281" name="id">
+    <column id="352" parent="283" name="id">
       <IdentityKind>by-default</IdentityKind>
       <NotNull>1</NotNull>
       <Position>1</Position>
-      <StateNumber>880</StateNumber>
+      <StateNumber>956</StateNumber>
       <StoredType>bigint|0s</StoredType>
-      <SequenceId>32787</SequenceId>
+      <SequenceId>41033</SequenceId>
       <TypeId>20</TypeId>
     </column>
-    <column id="343" parent="281" name="category">
+    <column id="353" parent="283" name="category">
       <Position>2</Position>
-      <StateNumber>880</StateNumber>
+      <StateNumber>956</StateNumber>
       <StoredType>varchar(255)|0s</StoredType>
       <TypeId>1043</TypeId>
     </column>
-    <column id="344" parent="281" name="content">
+    <column id="354" parent="283" name="content">
       <Position>3</Position>
-      <StateNumber>880</StateNumber>
+      <StateNumber>956</StateNumber>
       <StoredType>varchar(255)|0s</StoredType>
       <TypeId>1043</TypeId>
     </column>
-    <column id="345" parent="281" name="image_url">
+    <column id="355" parent="283" name="image_url">
       <Position>4</Position>
-      <StateNumber>880</StateNumber>
+      <StateNumber>956</StateNumber>
       <StoredType>varchar(255)|0s</StoredType>
       <TypeId>1043</TypeId>
     </column>
-    <column id="346" parent="281" name="title">
+    <column id="356" parent="283" name="title">
       <Position>5</Position>
-      <StateNumber>880</StateNumber>
+      <StateNumber>956</StateNumber>
       <StoredType>varchar(255)|0s</StoredType>
       <TypeId>1043</TypeId>
     </column>
-    <index id="347" parent="281" name="news_pkey">
+    <index id="357" parent="283" name="news_pkey">
       <ColNames>id</ColNames>
       <NameSurrogate>1</NameSurrogate>
-      <ObjectId>32794</ObjectId>
+      <ObjectId>41040</ObjectId>
       <Primary>1</Primary>
-      <StateNumber>880</StateNumber>
+      <StateNumber>956</StateNumber>
       <Unique>1</Unique>
       <AccessMethodId>403</AccessMethodId>
     </index>
-    <key id="348" parent="281" name="news_pkey">
+    <key id="358" parent="283" name="news_pkey">
       <NameSurrogate>1</NameSurrogate>
-      <ObjectId>32795</ObjectId>
+      <ObjectId>41041</ObjectId>
       <Primary>1</Primary>
-      <StateNumber>880</StateNumber>
-      <UnderlyingIndexId>32794</UnderlyingIndexId>
+      <StateNumber>956</StateNumber>
+      <UnderlyingIndexId>41040</UnderlyingIndexId>
     </key>
-    <column id="349" parent="282" name="id">
+    <column id="359" parent="284" name="id">
       <IdentityKind>by-default</IdentityKind>
       <NotNull>1</NotNull>
       <Position>1</Position>
@@ -4809,43 +4878,43 @@ false Zulu
       <SequenceId>32798</SequenceId>
       <TypeId>23</TypeId>
     </column>
-    <column id="350" parent="282" name="logo">
+    <column id="360" parent="284" name="logo">
       <Position>2</Position>
       <StateNumber>896</StateNumber>
       <StoredType>varchar(255)|0s</StoredType>
       <TypeId>1043</TypeId>
     </column>
-    <column id="351" parent="282" name="hospital_address">
+    <column id="361" parent="284" name="hospital_address">
       <Position>3</Position>
       <StateNumber>896</StateNumber>
       <StoredType>varchar(255)|0s</StoredType>
       <TypeId>1043</TypeId>
     </column>
-    <column id="352" parent="282" name="hospital_location">
+    <column id="362" parent="284" name="hospital_location">
       <Position>4</Position>
       <StateNumber>896</StateNumber>
       <StoredType>varchar(255)|0s</StoredType>
       <TypeId>1043</TypeId>
     </column>
-    <column id="353" parent="282" name="hospital_name">
+    <column id="363" parent="284" name="hospital_name">
       <Position>5</Position>
       <StateNumber>896</StateNumber>
       <StoredType>varchar(255)|0s</StoredType>
       <TypeId>1043</TypeId>
     </column>
-    <column id="354" parent="282" name="hospital_number">
+    <column id="364" parent="284" name="hospital_number">
       <Position>6</Position>
       <StateNumber>896</StateNumber>
       <StoredType>varchar(255)|0s</StoredType>
       <TypeId>1043</TypeId>
     </column>
-    <column id="355" parent="282" name="hospital_website">
+    <column id="365" parent="284" name="hospital_website">
       <Position>7</Position>
       <StateNumber>896</StateNumber>
       <StoredType>varchar(255)|0s</StoredType>
       <TypeId>1043</TypeId>
     </column>
-    <index id="356" parent="282" name="places_pkey">
+    <index id="366" parent="284" name="places_pkey">
       <ColNames>id</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>32804</ObjectId>
@@ -4854,20 +4923,20 @@ false Zulu
       <Unique>1</Unique>
       <AccessMethodId>403</AccessMethodId>
     </index>
-    <key id="357" parent="282" name="places_pkey">
+    <key id="367" parent="284" name="places_pkey">
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>32805</ObjectId>
       <Primary>1</Primary>
       <StateNumber>896</StateNumber>
       <UnderlyingIndexId>32804</UnderlyingIndexId>
     </key>
-    <check id="358" parent="283" name="product_product_type_check">
+    <check id="368" parent="285" name="product_product_type_check">
       <ColNames>product_type</ColNames>
       <ObjectId>32806</ObjectId>
       <Predicate>(product_type)::text = ANY ((ARRAY[&apos;BEAUTY&apos;::character varying, &apos;FOOD&apos;::character varying])::text[])</Predicate>
       <StateNumber>897</StateNumber>
     </check>
-    <column id="359" parent="283" name="id">
+    <column id="369" parent="285" name="id">
       <IdentityKind>by-default</IdentityKind>
       <NotNull>1</NotNull>
       <Position>1</Position>
@@ -4876,25 +4945,25 @@ false Zulu
       <SequenceId>16409</SequenceId>
       <TypeId>23</TypeId>
     </column>
-    <column id="360" parent="283" name="barcode">
+    <column id="370" parent="285" name="barcode">
       <Position>2</Position>
       <StateNumber>777</StateNumber>
       <StoredType>varchar(255)|0s</StoredType>
       <TypeId>1043</TypeId>
     </column>
-    <column id="361" parent="283" name="product_name">
+    <column id="371" parent="285" name="product_name">
       <Position>3</Position>
       <StateNumber>777</StateNumber>
       <StoredType>varchar(255)|0s</StoredType>
       <TypeId>1043</TypeId>
     </column>
-    <column id="362" parent="283" name="product_type">
+    <column id="372" parent="285" name="product_type">
       <Position>4</Position>
       <StateNumber>897</StateNumber>
       <StoredType>varchar(255)|0s</StoredType>
       <TypeId>1043</TypeId>
     </column>
-    <index id="363" parent="283" name="product_pkey">
+    <index id="373" parent="285" name="product_pkey">
       <ColNames>id</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>16415</ObjectId>
@@ -4903,14 +4972,14 @@ false Zulu
       <Unique>1</Unique>
       <AccessMethodId>403</AccessMethodId>
     </index>
-    <key id="364" parent="283" name="product_pkey">
+    <key id="374" parent="285" name="product_pkey">
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>16416</ObjectId>
       <Primary>1</Primary>
       <StateNumber>777</StateNumber>
       <UnderlyingIndexId>16415</UnderlyingIndexId>
     </key>
-    <column id="365" parent="284" name="id">
+    <column id="375" parent="286" name="id">
       <IdentityKind>by-default</IdentityKind>
       <NotNull>1</NotNull>
       <Position>1</Position>
@@ -4919,41 +4988,41 @@ false Zulu
       <SequenceId>16417</SequenceId>
       <TypeId>23</TypeId>
     </column>
-    <column id="366" parent="284" name="percentage">
+    <column id="376" parent="286" name="percentage">
       <Position>2</Position>
       <StateNumber>837</StateNumber>
       <StoredType>varchar(255)|0s</StoredType>
       <TypeId>1043</TypeId>
     </column>
-    <column id="367" parent="284" name="ingredient_id">
+    <column id="377" parent="286" name="ingredient_id">
       <NotNull>1</NotNull>
       <Position>3</Position>
       <StateNumber>778</StateNumber>
       <StoredType>integer|0s</StoredType>
       <TypeId>23</TypeId>
     </column>
-    <column id="368" parent="284" name="product_id">
+    <column id="378" parent="286" name="product_id">
       <NotNull>1</NotNull>
       <Position>4</Position>
       <StateNumber>778</StateNumber>
       <StoredType>integer|0s</StoredType>
       <TypeId>23</TypeId>
     </column>
-    <foreign-key id="369" parent="284" name="fkoexfkyxqal5o2c6cnendmu58e">
+    <foreign-key id="379" parent="286" name="fkoexfkyxqal5o2c6cnendmu58e">
       <ColNames>ingredient_id</ColNames>
       <ObjectId>16429</ObjectId>
       <StateNumber>780</StateNumber>
       <RefKeyColPositions>1</RefKeyColPositions>
       <RefTableId>16404</RefTableId>
     </foreign-key>
-    <foreign-key id="370" parent="284" name="fk82j6ju1bhetgb0q2snlosewwb">
+    <foreign-key id="380" parent="286" name="fk82j6ju1bhetgb0q2snlosewwb">
       <ColNames>product_id</ColNames>
       <ObjectId>16434</ObjectId>
       <StateNumber>781</StateNumber>
       <RefKeyColPositions>1</RefKeyColPositions>
       <RefTableId>16410</RefTableId>
     </foreign-key>
-    <index id="371" parent="284" name="product_ingredient_pkey">
+    <index id="381" parent="286" name="product_ingredient_pkey">
       <ColNames>id</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>16421</ObjectId>
@@ -4962,20 +5031,20 @@ false Zulu
       <Unique>1</Unique>
       <AccessMethodId>403</AccessMethodId>
     </index>
-    <key id="372" parent="284" name="product_ingredient_pkey">
+    <key id="382" parent="286" name="product_ingredient_pkey">
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>16422</ObjectId>
       <Primary>1</Primary>
       <StateNumber>778</StateNumber>
       <UnderlyingIndexId>16421</UnderlyingIndexId>
     </key>
-    <check id="373" parent="285" name="user_product_action_type_check">
+    <check id="383" parent="287" name="user_product_action_type_check">
       <ColNames>action_type</ColNames>
       <ObjectId>24595</ObjectId>
       <Predicate>(action_type)::text = ANY ((ARRAY[&apos;SCANNED&apos;::character varying, &apos;ADDED&apos;::character varying])::text[])</Predicate>
       <StateNumber>855</StateNumber>
     </check>
-    <column id="374" parent="285" name="id">
+    <column id="384" parent="287" name="id">
       <IdentityKind>by-default</IdentityKind>
       <NotNull>1</NotNull>
       <Position>1</Position>
@@ -4984,42 +5053,42 @@ false Zulu
       <SequenceId>16423</SequenceId>
       <TypeId>23</TypeId>
     </column>
-    <column id="375" parent="285" name="product_id">
+    <column id="385" parent="287" name="product_id">
       <NotNull>1</NotNull>
       <Position>2</Position>
       <StateNumber>779</StateNumber>
       <StoredType>integer|0s</StoredType>
       <TypeId>23</TypeId>
     </column>
-    <column id="376" parent="285" name="user_id">
+    <column id="386" parent="287" name="user_id">
       <NotNull>1</NotNull>
       <Position>3</Position>
       <StateNumber>779</StateNumber>
       <StoredType>integer|0s</StoredType>
       <TypeId>23</TypeId>
     </column>
-    <column id="377" parent="285" name="action_type">
+    <column id="387" parent="287" name="action_type">
       <NotNull>1</NotNull>
       <Position>4</Position>
       <StateNumber>855</StateNumber>
       <StoredType>varchar(255)|0s</StoredType>
       <TypeId>1043</TypeId>
     </column>
-    <foreign-key id="378" parent="285" name="fknw43wab2rt35jmofmpbhkibco">
+    <foreign-key id="388" parent="287" name="fknw43wab2rt35jmofmpbhkibco">
       <ColNames>product_id</ColNames>
       <ObjectId>16439</ObjectId>
       <StateNumber>782</StateNumber>
       <RefKeyColPositions>1</RefKeyColPositions>
       <RefTableId>16410</RefTableId>
     </foreign-key>
-    <foreign-key id="379" parent="285" name="fk333rnj4wcrfqrp39i0vcs31l1">
+    <foreign-key id="389" parent="287" name="fk333rnj4wcrfqrp39i0vcs31l1">
       <ColNames>user_id</ColNames>
       <ObjectId>16444</ObjectId>
       <StateNumber>783</StateNumber>
       <RefKeyColPositions>1</RefKeyColPositions>
       <RefTableId>16395</RefTableId>
     </foreign-key>
-    <index id="380" parent="285" name="user_product_pkey">
+    <index id="390" parent="287" name="user_product_pkey">
       <ColNames>id</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>16427</ObjectId>
@@ -5028,7 +5097,7 @@ false Zulu
       <Unique>1</Unique>
       <AccessMethodId>403</AccessMethodId>
     </index>
-    <key id="381" parent="285" name="user_product_pkey">
+    <key id="391" parent="287" name="user_product_pkey">
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>16428</ObjectId>
       <Primary>1</Primary>

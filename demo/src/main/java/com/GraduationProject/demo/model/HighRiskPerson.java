@@ -20,5 +20,5 @@ public class HighRiskPerson {
     private String imageUrl;
 
     @Enumerated(EnumType.STRING)
-    private NewsCategory category;
+    private HighRiskCategory category;
 }
