@@ -22,9 +22,7 @@ public class HereditaryPeopleService {
         return repository.findByCategory(category);
     }
 
-    public HereditaryPeople createNews(HereditaryPeople post) {
-        return repository.save(post);
-    }
+    public HereditaryPeople createNews(HereditaryPeople post) {return repository.save(post);}
 
     public void deleteNews(Long id) {
         repository.deleteById(id);
