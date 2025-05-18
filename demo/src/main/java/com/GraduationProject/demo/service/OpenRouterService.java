@@ -20,8 +20,6 @@ public class OpenRouterService {
         this.webClient = webClientBuilder
                 .baseUrl(API_URL)
                 .defaultHeader("Authorization", "Bearer " + API_KEY)
-                .defaultHeader("HTTP-Referer", "http://localhost:8080")
-                .defaultHeader("X-Title", "My Spring Boot Chat")
                 .build();
     }
 
