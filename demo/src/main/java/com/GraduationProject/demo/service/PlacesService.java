@@ -7,6 +7,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class PlacesService {
@@ -41,5 +43,9 @@ public class PlacesService {
             throw new RuntimeException("Place not found with id " + id);
         }
         placesrepo.deleteById(id);
+    }
+
+    public List<Places> getAll() {
+        return placesrepo.findAll();
     }
 }
