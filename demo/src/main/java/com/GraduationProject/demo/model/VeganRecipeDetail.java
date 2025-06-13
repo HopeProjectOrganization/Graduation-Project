@@ -27,7 +27,7 @@ public class VeganRecipeDetail {
         private String portion;
         private String time;
 
-//        @Column(length = 3000)
+        @Column(length = 5000)
         private String description;
 
         private String image;
@@ -58,6 +58,7 @@ public class VeganRecipeDetail {
     @Builder
     public static class Step {
         private String stepTitle;       // e.g., "Step 1"
+        @Column(length = 5000)
         private String stepDescription; // e.g., "Melt the chocolate..."
     }
 

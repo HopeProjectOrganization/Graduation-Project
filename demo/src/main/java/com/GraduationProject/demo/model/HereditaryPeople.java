@@ -8,6 +8,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Data
 @Entity
@@ -21,10 +22,57 @@ public class HereditaryPeople {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String title;
-    private String content;
+//    private String content;
     @Enumerated(EnumType.STRING)
     private NewsCategory category;
     private String imageUrl;
     private LocalDate date;
+
+
+
+
+    private String articleId;
+
+//    private String title;
+
+    private String link;
+
+    @ElementCollection
+    private List<String> keywords;
+
+    @ElementCollection
+    private List<String> creator;
+
+    @Column(length = 5000)
+    private String description;
+
+    @Column(length = 5000)
+    private String content;
+
+    private String pubDate;
+
+//    private String imageUrl;
+
+    private String videoUrl;
+
+    private String sourceId;
+
+    private String sourceName;
+
+    private int sourcePriority;
+
+    private String sourceUrl;
+
+    private String sourceIcon;
+
+    private String language;
+
+    @ElementCollection
+    private List<String> country;
+
+//    @ElementCollection
+//    private List<String> category;
+
+    private boolean duplicate;
 
 }
