@@ -1,8 +1,8 @@
 package com.GraduationProject.demo.controller;
 
 
-
-import com.GraduationProject.demo.model.FavoriteMeal;
+import com.GraduationProject.demo.DTO.SaveFavoriteMealRequest;
+import com.GraduationProject.demo.model.UserFavoriteMeal;
 import com.GraduationProject.demo.service.FavoriteMealService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -11,47 +11,42 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/favoriteMeal")
+@RequestMapping("/api/favorite-meals")
 @RequiredArgsConstructor
 public class FavoriteMealController {
 
-    private final FavoriteMealService favoriteMealService;
+    private final FavoriteMealService service;
 
     @PostMapping
-    public ResponseEntity<Void> addFavorite(@RequestBody FavoriteMeal meal) {
-        favoriteMealService.addFavoriteMeal(meal);
+    public ResponseEntity<?> save(@RequestBody SaveFavoriteMealRequest request) {
+        service.saveFavoriteMeal(request);
         return ResponseEntity.ok().build();
     }
 
-    @GetMapping("/category")
-    public ResponseEntity<List<FavoriteMeal>> getByCategory(@RequestParam String category) {
-        return ResponseEntity.ok(favoriteMealService.getFavoritesByCategory(category));
+    @GetMapping("/category/{category}")
+    public ResponseEntity<?> getByCategory(@PathVariable String category) {
+        return ResponseEntity.ok(service.getByCategory(category));
     }
 
-    @GetMapping("/type")
-    public ResponseEntity<List<FavoriteMeal>> getByType(@RequestParam String type) {
-        return ResponseEntity.ok(favoriteMealService.getFavoritesByType(type));
+    @GetMapping("/type/{type}")
+    public ResponseEntity<?> getByType(@PathVariable String type) {
+        return ResponseEntity.ok(service.getByType(type));
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<FavoriteMeal> getById(@PathVariable String id) {
-        return ResponseEntity.ok(favoriteMealService.getFavoriteById(id));
+    @GetMapping("/{mealId}")
+    public ResponseEntity<?> getById(@PathVariable String mealId) {
+        return ResponseEntity.ok(service.getByMealId(mealId));
     }
 
-    @GetMapping
-    public ResponseEntity<List<FavoriteMeal>> getAll() {
-        return ResponseEntity.ok(favoriteMealService.getAllFavorites());
-    }
-
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteById(@PathVariable String id) {
-        favoriteMealService.deleteById(id);
+    @DeleteMapping("/{mealId}")
+    public ResponseEntity<?> deleteById(@PathVariable String mealId) {
+        service.deleteById(mealId);
         return ResponseEntity.ok().build();
     }
 
     @DeleteMapping
-    public ResponseEntity<Void> deleteAll() {
-        favoriteMealService.deleteAll();
+    public ResponseEntity<?> deleteAll() {
+        service.deleteAll();
         return ResponseEntity.ok().build();
     }
 }

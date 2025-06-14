@@ -1,11 +1,14 @@
 package com.GraduationProject.demo.service;
 
 
+import com.GraduationProject.demo.DTO.SaveFavoriteMealRequest;
+import com.GraduationProject.demo.model.UserFavoriteMeal;
 
-import com.GraduationProject.demo.model.FavoriteMeal;
+import com.GraduationProject.demo.model.UserFavoriteMeal;
 import com.GraduationProject.demo.repo.FavoriteMealRepository;
 import com.GraduationProject.demo.repo.UserRepository;
 import com.GraduationProject.demo.user.User;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -20,39 +23,50 @@ public class FavoriteMealService {
     private final FavoriteMealRepository favoriteMealRepository;
     private final UserRepository userRepository;
 
-    private User getCurrentUser() {
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        String email = auth.getName();
-        return userRepository.findByEmail(email).orElseThrow(() -> new RuntimeException("User not found"));
+    public void saveFavoriteMeal(SaveFavoriteMealRequest request) {
+        User user = getCurrentUser();
+
+        if (favoriteMealRepository.existsByUserAndMealId(user, request.getMealId())) {
+            return;
+        }
+
+        UserFavoriteMeal favorite = UserFavoriteMeal.builder()
+                .mealId(request.getMealId())
+                .category(request.getCategory())
+                .type(request.getType())
+                .user(user)
+                .build();
+
+        favoriteMealRepository.save(favorite);
     }
 
-    public void addFavoriteMeal(FavoriteMeal meal) {
-        meal.setUser(getCurrentUser());
-        favoriteMealRepository.save(meal);
-    }
-
-    public List<FavoriteMeal> getFavoritesByCategory(String category) {
+    public List<UserFavoriteMeal> getByCategory(String category) {
         return favoriteMealRepository.findByUserAndCategory(getCurrentUser(), category);
     }
 
-    public List<FavoriteMeal> getFavoritesByType(String type) {
+    public List<UserFavoriteMeal> getByType(String type) {
         return favoriteMealRepository.findByUserAndType(getCurrentUser(), type);
     }
 
-    public FavoriteMeal getFavoriteById(String id) {
-        return favoriteMealRepository.findByUserAndId(getCurrentUser(), id)
-                .orElseThrow(() -> new RuntimeException("Meal not found"));
+    public UserFavoriteMeal getByMealId(String id) {
+        return favoriteMealRepository.findByUserAndMealId(getCurrentUser(), id)
+                .orElseThrow(() -> new RuntimeException("Not found"));
     }
 
+    @Transactional
     public void deleteById(String id) {
-        favoriteMealRepository.deleteByUserAndId(getCurrentUser(), id);
+        favoriteMealRepository.deleteByUserAndMealId(getCurrentUser(), id);
     }
 
+    @Transactional
     public void deleteAll() {
         favoriteMealRepository.deleteAllByUser(getCurrentUser());
     }
 
-    public List<FavoriteMeal> getAllFavorites() {
-        return favoriteMealRepository.findByUser(getCurrentUser());
+    private User getCurrentUser() {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        String email = auth.getName(); // from JWT
+        return userRepository.findByEmail(email)
+                .orElseThrow(() -> new RuntimeException("User not found"));
     }
 }

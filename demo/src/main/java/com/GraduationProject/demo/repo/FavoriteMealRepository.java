@@ -1,26 +1,23 @@
 package com.GraduationProject.demo.repo;
 
-
-
-import com.GraduationProject.demo.model.FavoriteMeal;
+import com.GraduationProject.demo.model.UserFavoriteMeal;
+import com.GraduationProject.demo.model.UserFavoriteMeal;
 import com.GraduationProject.demo.user.User;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.Optional;
 
-public interface FavoriteMealRepository extends JpaRepository<FavoriteMeal, String> {
+@Repository
+public interface FavoriteMealRepository extends JpaRepository<UserFavoriteMeal, Long> {
 
-    List<FavoriteMeal> findByUser(User user);
+    boolean existsByUserAndMealId(User user, String mealId);
 
-    List<FavoriteMeal> findByUserAndCategory(User user, String category);
+    List<UserFavoriteMeal> findByUserAndCategory(User user, String category);
+    List<UserFavoriteMeal> findByUserAndType(User user, String type);
+    Optional<UserFavoriteMeal> findByUserAndMealId(User user, String mealId);
 
-    List<FavoriteMeal> findByUserAndType(User user, String type);
-
-    Optional<FavoriteMeal> findByUserAndId(User user, String id);
-
-    void deleteByUserAndId(User user, String id);
-
+    void deleteByUserAndMealId(User user, String mealId);
     void deleteAllByUser(User user);
 }
-
