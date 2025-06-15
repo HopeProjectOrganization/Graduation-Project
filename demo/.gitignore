@@ -1,0 +1,16 @@
+# Ignore Firebase credentials (keep local only)
+/src/main/resources/firebase-service-account.json
+
+# Maven build output
+/target/
+
+# IDE settings
+/.idea/
+/*.iml
+
+# OS temporary files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
