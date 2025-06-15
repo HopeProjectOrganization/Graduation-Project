@@ -1,6 +1,7 @@
 # Ignore Firebase credentials (keep local only)
-/src/main/resources/firebase-service-account.json
+demo/src/main/resources/firebase-service-account.json
 
+demo/target/classes/firebase-service-account.json
 # Maven build output
 /target/
 
