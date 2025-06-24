@@ -53,7 +53,7 @@ public class PasswordResetService {
         User user = userRepository.findByEmail(userEmailToResend)
                 .orElseThrow(() -> new RuntimeException("User not found"));
         String code = generateFourDigitNumber();
-        LocalDateTime expiry = LocalDateTime.now().plusMinutes(1); // Token valid for 1 hour
+        LocalDateTime expiry = LocalDateTime.now().plusMinutes(10); // Token valid for 1 hour
 
         userRepository.updateResetPasswordCode(code, expiry,  userEmailToResend);
 
