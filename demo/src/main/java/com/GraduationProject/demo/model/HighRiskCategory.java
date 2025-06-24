@@ -16,8 +16,8 @@ public enum HighRiskCategory {
 
     //2st5dmt de 34an mkn4 rade ehndl el uppercase fe el edit
     @JsonCreator
-    public static NewsCategory fromString(String value) {
-        return NewsCategory.valueOf(value.toUpperCase());
+    public static  HighRiskCategory fromString(String value) {
+        return HighRiskCategory.valueOf(value.toUpperCase());
     }
 
 

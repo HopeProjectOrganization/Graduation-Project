@@ -32,6 +32,7 @@ public class AuthenticationService {
         }
 
         var user = User.builder()
+                .name(request.getName())
                 .haveCancer(request.getHaveCancer())
                 .type(request.getType())
                 .familyType(request.getFamilyType())

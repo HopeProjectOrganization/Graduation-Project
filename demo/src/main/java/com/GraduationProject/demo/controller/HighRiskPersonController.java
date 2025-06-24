@@ -1,5 +1,6 @@
 package com.GraduationProject.demo.controller;
 
+import com.GraduationProject.demo.model.HighRiskCategory;
 import com.GraduationProject.demo.model.HighRiskPerson;
 import com.GraduationProject.demo.model.NewsCategory;
 import com.GraduationProject.demo.service.HighRiskPersonService;
@@ -21,7 +22,7 @@ public class HighRiskPersonController {
     }
 
     @GetMapping("/category/{category}")
-    public List<HighRiskPerson> getByCategory(@PathVariable NewsCategory category) {
+    public List<HighRiskPerson> getByCategory(@PathVariable HighRiskCategory category) {
         return service.getByCategory(category);
     }
 

@@ -7,20 +7,19 @@ import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Mono;
 
 import java.util.List;
-
 @Service
 public class OpenRouterService {
 
-    private final WebClient webClient;
+    private final WebClient.Builder webClientBuilder;
 
-    private static final String API_KEY = "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";
-    private static final String API_URL = "https://openrouter.ai/api/v1/chat/completions";
+    private final String apiKey;
 
-    public OpenRouterService(WebClient.Builder webClientBuilder) {
-        this.webClient = webClientBuilder
-                .baseUrl(API_URL)
-                .defaultHeader("Authorization", "Bearer " + API_KEY)
-                .build();
+    private static final String BASE_URL = "https://openrouter.ai/api/v1/chat/completions";
+
+    public OpenRouterService(WebClient.Builder webClientBuilder,
+                             @Value("${openrouter.api.key}") String apiKey) {
+        this.webClientBuilder = webClientBuilder;
+        this.apiKey = apiKey;
     }
 
     public Mono<String> getChatResponse(String prompt) {
@@ -29,19 +28,23 @@ public class OpenRouterService {
                 List.of(new chatDto.Message("user", prompt))
         );
 
-        return webClient.post()
+        return webClientBuilder.build()
+                .post()
+                .uri(BASE_URL)
+                .header("Authorization", "Bearer " + apiKey) // use the key from the environment
                 .bodyValue(request)
                 .retrieve()
                 .onStatus(status -> status.isError(), response -> {
                     return response.bodyToMono(String.class)
-                            .flatMap(errorBody -> Mono.error(new RuntimeException(
-                                    "OpenRouter API error: " + response.statusCode() + " - " + errorBody
-                            )));
+                            .flatMap(errorBody -> {
+                                System.err.println("OpenRouter error body: " + errorBody);
+                                return Mono.error(new RuntimeException(errorBody));
+                            });
                 })
                 .bodyToMono(chatDto.OpenRouterResponse.class)
                 .map(response -> response.choices().get(0).message().content())
-                .onErrorResume(e -> {
-                    System.err.println("Error calling OpenRouter: " + e.getMessage());
+                .onErrorResume(error -> {
+                    System.err.println("Error calling OpenRouter: " + error.getMessage());
                     return Mono.just("Sorry, I'm having trouble responding right now.");
                 });
     }

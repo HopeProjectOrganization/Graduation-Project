@@ -1,5 +1,6 @@
 package com.GraduationProject.demo.service;
 
+import com.GraduationProject.demo.model.HighRiskCategory;
 import com.GraduationProject.demo.model.HighRiskPerson;
 import com.GraduationProject.demo.model.NewsCategory;
 import com.GraduationProject.demo.repo.HighRiskPersonRepository;
@@ -18,7 +19,7 @@ public class HighRiskPersonService {
         return repository.findAll();
     }
 
-    public List<HighRiskPerson> getByCategory(NewsCategory category) {
+    public List<HighRiskPerson> getByCategory(HighRiskCategory category) {
         return repository.findByCategory(category);
     }
 
