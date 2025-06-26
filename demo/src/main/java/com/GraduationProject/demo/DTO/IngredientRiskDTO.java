@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class IngredientRiskDTO {
+public class  IngredientRiskDTO {
     private String ingredientName;
     private String riskLevel;
     private String safeLimit;

@@ -18,4 +18,9 @@ public class ScanController {
     public ResponseEntity<?> scanBarcode(@PathVariable String barcode) {
         return ResponseEntity.ok(scanService.scanProduct(barcode));
     }
+    @GetMapping("/all")
+    public ResponseEntity<?> getAllProducts() {
+        return ResponseEntity.ok(scanService.findAllProducts());
+    }
+
 }

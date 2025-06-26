@@ -24,7 +24,7 @@ public class OpenRouterService {
 
     public Mono<String> getChatResponse(String prompt) {
         chatDto.OpenRouterRequest request = new chatDto.OpenRouterRequest(
-                "openai/gpt-3.5-turbo",
+                "openai/gpt-3.5-turbo-0613",
                 List.of(new chatDto.Message("user", prompt))
         );
 

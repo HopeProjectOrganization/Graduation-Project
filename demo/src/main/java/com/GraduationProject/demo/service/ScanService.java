@@ -112,7 +112,9 @@ public class ScanService {
             return "Unknown Risk";
         }
     }
-
+    public List<Product> findAllProducts() {
+        return productRepository.findAll();
+    }
     // New method to categorize by riskLevel when ingredientPercentage is null
     private String categorizeByRiskLevel(String riskLevel) {
         if ("HIGH".equalsIgnoreCase(riskLevel)) {

@@ -20,7 +20,7 @@ public class NewsController {
         if (news.getCategory() == null) {
             throw new RuntimeException("Category cannot be null");
         }
-        return newsService.addNews(news.getTitle(), news.getContent(), news.getCategory().name(), news.getImageUrl());
+        return newsService.addNews(news);
     }
 
     @GetMapping("/{category}")
@@ -44,7 +44,7 @@ public class NewsController {
         if (news.getCategory() == null) {
             throw new RuntimeException("Category cannot be null");
         }
-        News updatedNews = newsService.updateNews(id, news.getTitle(), news.getContent(), news.getCategory().name(), news.getImageUrl());
+        News updatedNews = newsService.updateNews(id, news);
         return ResponseEntity.ok(updatedNews);
     }
 
