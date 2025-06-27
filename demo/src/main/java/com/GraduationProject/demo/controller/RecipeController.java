@@ -40,5 +40,12 @@ public class RecipeController {
         service.deleteByRecipeId(recipeId);
         return ResponseEntity.noContent().build();
     }
-}
 
+    // 🛠️ New edit/update endpoint
+    @PutMapping("/{recipeId}")
+    public ResponseEntity<Recipe> edit(@PathVariable Integer recipeId,
+                                       @RequestBody Recipe recipe) {
+        Recipe updated = service.update(recipeId, recipe);
+        return ResponseEntity.ok(updated);
+    }
+}
