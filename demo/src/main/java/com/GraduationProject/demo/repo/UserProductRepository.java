@@ -15,4 +15,6 @@ public interface UserProductRepository extends JpaRepository<UserProduct, Intege
     List<UserProduct> findByUserIdAndActionType(Integer userId, ActionType actionType);
     boolean existsByUserAndProductAndActionType(User user, Product product, ActionType actionType);
 
+    void deleteByProductId(Integer id);
+    
 }

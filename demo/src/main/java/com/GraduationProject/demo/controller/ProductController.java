@@ -31,6 +31,15 @@ public class ProductController {
         return new ResponseEntity<>(all, HttpStatus.OK);
     }
 
+
+    @DeleteMapping("/delete/product/{id}")
+    public ResponseEntity<Void> deleteProduct(@PathVariable Integer id) {
+        productService.deleteProductById(id);
+        return ResponseEntity.noContent().build();
+//        return ResponseEntity.ok("Product deleted successfully");
+
+    }
+
     @PutMapping("/update/{id}")
     public ResponseEntity<ProductIngredient> updateProductIngredient(
             @PathVariable Integer id,

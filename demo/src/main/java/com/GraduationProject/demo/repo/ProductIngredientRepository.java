@@ -13,4 +13,6 @@ public interface ProductIngredientRepository extends JpaRepository<ProductIngred
     boolean existsByProductAndIngredient(Product product, Ingredient ingredient);
     List<ProductIngredient> findByProduct(Product product);
 
+    void deleteByProductId(Integer id);
+
 }
