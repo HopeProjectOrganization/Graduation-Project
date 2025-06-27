@@ -73,4 +73,62 @@ public class ProductIngredientService {
         return product;
     }
 
+
+
+    public ProductIngredient updateProductIngredient(Integer id, String newIngredientName, String newPercentage) {
+
+        ProductIngredient existingRelation = productIngredientRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("ProductIngredient not found with id " + id));
+
+
+        Ingredient ingredient = ingredientRepository.findByIngredientName(newIngredientName)
+                .orElseGet(() -> {
+                    Ingredient newIngredient = Ingredient.builder()
+                            .ingredientName(newIngredientName)
+                            .build();
+                    return ingredientRepository.save(newIngredient);
+                });
+
+
+        existingRelation.setIngredient(ingredient);
+        existingRelation.setPercentage(newPercentage);
+
+        return productIngredientRepository.save(existingRelation);
+    }
+
+    public List<ProductIngredient> getAllProductIngredients() {
+        return productIngredientRepository.findAll();
+    }
+
+    public ProductIngredient updateFullProductIngredient(Integer productIngredientId, Map<String, Object> data) {
+        ProductIngredient relation = productIngredientRepository.findById(productIngredientId)
+                .orElseThrow(() -> new RuntimeException("Relation not found"));
+
+
+        Map<String, Object> productData = (Map<String, Object>) data.get("product");
+        if (productData != null) {
+            Product product = relation.getProduct();
+            product.setProductName((String) productData.get("productName"));
+            product.setBarcode((String) productData.get("barcode"));
+            if (productData.get("productType") != null) {
+                product.setProductType(ProductType.valueOf(((String) productData.get("productType")).toUpperCase()));
+            }
+            productRepository.save(product);
+        }
+
+
+        Map<String, Object> ingredientData = (Map<String, Object>) data.get("ingredient");
+        if (ingredientData != null) {
+            String newName = (String) ingredientData.get("ingredientName");
+            Ingredient ingredient = ingredientRepository.findByIngredientName(newName)
+                    .orElseGet(() -> ingredientRepository.save(Ingredient.builder().ingredientName(newName).build()));
+            relation.setIngredient(ingredient);
+
+            String newPercentage = (String) ingredientData.get("percentage");
+            if (newPercentage != null) relation.setPercentage(newPercentage);
+        }
+
+        return productIngredientRepository.save(relation);
+    }
+
 }

@@ -1,6 +1,7 @@
 package com.GraduationProject.demo.service;
 
 
+import com.GraduationProject.demo.model.Places;
 import com.GraduationProject.demo.model.Product;
 import com.GraduationProject.demo.repo.ProductRepository;
 import lombok.RequiredArgsConstructor;
@@ -24,10 +25,11 @@ public class ProductService {
     }
 
 
-    public List<Product> getAllProducts(){
-
+    public  List<Product> getAllProducts() {
         return productRepository.findAll();
     }
+
+
     public Product getProductById(Integer id){
 
         return productRepository.findById(id).get();

@@ -5,6 +5,7 @@ package com.GraduationProject.demo.service;
 import com.GraduationProject.demo.DTO.MealCategory;
 import com.GraduationProject.demo.DTO.MealCategoryResponse;
 import com.GraduationProject.demo.DTO.SaveMealRequest;
+import com.GraduationProject.demo.DTO.UpdateMealRequest;
 import com.GraduationProject.demo.model.UserMeal;
 import com.GraduationProject.demo.repo.UserMealRepository;
 import com.GraduationProject.demo.repo.UserRepository;
@@ -58,6 +59,37 @@ public class UserMealService {
                 .toList();
 
         return new MealCategoryResponse(categoryStr, date, mealIds);
+    }
+    public void deleteMeal(Integer userId, String dateStr, String categoryStr, String mealId) {
+        User user = userRepository.findById(userId)
+                .orElseThrow(() -> new RuntimeException("User not found"));
+
+        LocalDate date = LocalDate.parse(dateStr);
+        MealCategory category = MealCategory.valueOf(categoryStr.toUpperCase());
+
+        Optional<UserMeal> mealToDelete = userMealRepository
+                .findByUserAndMealDateAndCategoryAndMealId(user, date, category, mealId);
+
+        mealToDelete.ifPresent(userMealRepository::delete);
+    }
+    public void updateMeal(UpdateMealRequest request) {
+        User user = userRepository.findById(request.getUserId())
+                .orElseThrow(() -> new RuntimeException("User not found"));
+
+        LocalDate date = LocalDate.parse(request.getDate());
+        MealCategory category = MealCategory.valueOf(request.getCategory().toUpperCase());
+
+        UserMeal mealToUpdate = userMealRepository
+                .findByUserAndMealDateAndCategoryAndMealId(
+                        user,
+                        date,
+                        category,
+                        request.getOldMealId()
+                )
+                .orElseThrow(() -> new RuntimeException("Meal not found"));
+
+        mealToUpdate.setMealId(request.getNewMealId());
+        userMealRepository.save(mealToUpdate);
     }
 
 

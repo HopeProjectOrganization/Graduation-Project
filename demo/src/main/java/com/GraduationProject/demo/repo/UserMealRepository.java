@@ -13,4 +13,10 @@ import java.util.Optional;
 @Repository
 public interface UserMealRepository extends JpaRepository<UserMeal, Long> {
     List<UserMeal> findByUserAndMealDateAndCategory(User user, LocalDate date, MealCategory category);
+    Optional<UserMeal> findByUserAndMealDateAndCategoryAndMealId(
+            User user,
+            LocalDate mealDate,
+            MealCategory category,
+            String mealId
+    );
 }
